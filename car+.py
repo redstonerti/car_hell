@@ -8,6 +8,14 @@ class Car:
     def __repr__(self):
         return f"({self.x_coord},{self.y_coord})"
 
+def move(car:Car,dx,dy):
+    if Car(car.x_coord + dx, car.y_coord + dy) not in Car.cars:
+        car.x_coord += dx
+        car.y_coord += dy
+        print(car)
+    else:
+        print("Μηνυμα λαθους, δεν μπορει να ειναι στην ιδια θεση")
+
 def make_car(x,y):
     if Car(x,y) not in Car.cars:
         car = Car(x,y)
@@ -18,32 +26,16 @@ def make_car(x,y):
         print("Μηνυμα λαθους, δεν μπορει να ειναι στην ιδια θεση")
 
 def move_up(car: Car):
-    if Car(car.x_coord, car.y_coord + 1) not in Car.cars:
-        car.y_coord += 1
-        print(car)
-    else:
-        print("Μηνυμα λαθους, δεν μπορει να ειναι στην ιδια θεση")
+    move(car,0,1)
 
 def move_down(car: Car):
-    if Car(car.x_coord, car.y_coord - 1) not in Car.cars:
-        car.y_coord -= 1
-        print(car)
-    else:
-        print("Μηνυμα λαθους, δεν μπορει να ειναι στην ιδια θεση")
-        
+    move(car,0,-1)
+
 def move_right(car: Car):
-    if Car(car.x_coord + 1, car.y_coord) not in Car.cars:
-        car.x_coord += 1
-        print(car)
-    else:
-        print("Μηνυμα λαθους, δεν μπορει να ειναι στην ιδια θεση")
-        
+    move(car,1,0)
+
 def move_left(car: Car):
-    if Car(car.x_coord - 1, car.y_coord) not in Car.cars:
-        car.x_coord -= 1
-        print(car)
-    else:
-        print("Μηνυμα λαθους, δεν μπορει να ειναι στην ιδια θεση")
+    move(car,-1,0)
 
 car1 = make_car(0,0)
 move_left(car1)
